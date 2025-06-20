@@ -1,31 +1,31 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom';
-import { fetchData, resetState } from '../features/usersSlice';
+import { fetchUsersList, resetUsersList } from '../features/usersSlice';
 import Loading from '../components/Loading';
 import Card from '../components/Card';
+import { useAppSelector, useAppDispatch } from '../app/hooks'
 
 const Users = () => {
 
-  const dispatch = useDispatch();
+
+  const usersList = useAppSelector((state) => state.users.usersList)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchData())
+    dispatch(fetchUsersList())
   
     return () => {
-      dispatch(resetState());
+      dispatch(resetUsersList());
     }
   }, [dispatch])
   
-  const user = useSelector((state)=>state.auth.user);
-
-  const users = useSelector((state)=>state.users.usersList);
-
-  const loading = useSelector((state)=>state.users.loading);
-  const error = useSelector((state)=>state.users.error);
+  const user = useAppSelector((state)=>state.auth.user);
+  const users = useAppSelector((state) => state.users.usersList)
+  const loading = useAppSelector((state) => state.users.loading)
+  const error = useAppSelector((state) => state.users.error)
 
 
-  console.log(users);
+  console.log(usersList);
   console.log(loading);
 
   
