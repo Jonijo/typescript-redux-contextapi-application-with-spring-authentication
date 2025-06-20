@@ -2,7 +2,13 @@ import { useLoaderData } from 'react-router-dom'
 
 const User = () => {
 
-  const {email,avatar} = useLoaderData();
+  const {email,avatar} = useLoaderData() as {
+    id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    avatar: string;
+  };
 
  
 

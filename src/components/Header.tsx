@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, NavLink, useNavigate } from 'react-router-dom'
-import { resetUser } from '../features/authSlice';
+import { useAppSelector,useAppDispatch  } from '../app/hooks'
 import type { FormEvent } from 'react';
+import { resetUser } from '../features/authSlice';
 
 const Header = () => {
 
-  const user = useSelector(state => state.auth.user);
+  const user = useAppSelector((state) => state.auth.user);
 
   const navigate = useNavigate();
 
   
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleLogout(e : FormEvent)
   {

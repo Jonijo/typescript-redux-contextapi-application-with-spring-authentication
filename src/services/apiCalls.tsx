@@ -1,4 +1,5 @@
 import axios from "axios";
+import { type LoaderFunctionArgs } from "react-router-dom";
 
 export const getUsers = async () =>
 {
@@ -14,18 +15,12 @@ export const getUsers = async () =>
 }
 
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
 
-
-export const getUsersById = async ({params} :Params) =>
+export const getUsersById = async ({params} : LoaderFunctionArgs) =>
 {
-        const API_URL = "https://reqres.in/api/users/"+params.id;
+    const API_URL = "https://reqres.in/api/users/"+params.id;
     
-        const {data} = await axios.get(API_URL, {
+    const {data} = await axios.get(API_URL, {
       headers: {
         'x-api-key': 'reqres-free-v1',
       },

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useState, type FormEvent } from 'react'
 import { setUser } from '../features/authSlice';
-import { Form, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
+import {  useAppDispatch } from '../app/hooks'
 
 
 const Login = () => {
@@ -10,13 +10,13 @@ const Login = () => {
   const [email,setEmail] = useState("");
 
 
-  const dispatch = useDispatch();
+   const dispatch = useAppDispatch()
 
   const navigate = useNavigate();
 
 
 
-  function handleSubmit(e)
+  function handleSubmit(e : FormEvent)
   {
     e.preventDefault();
 
