@@ -14,7 +14,10 @@ import { Provider } from 'react-redux'
 import { getUsersById } from './services/apiCalls.js';
 import Loading from './components/Loading';
 import User from './routes/User';
+import 'react-toastify/dist/ReactToastify.css';
+import RequireAuth from './components/RequireAuth';
 
+// npm install @reduxjs/toolkit react-redux axios react-router-dom react-router@latest jwt-decode react-toastify
 
 const router = createBrowserRouter([
   {
@@ -35,16 +38,26 @@ const router = createBrowserRouter([
     
       {
         path: "/login",
-        element: <Login/>
+        element: (
+            <Login/>
+        )
       },
     
       {
         path: "/users",
-        element: <Users/>,
+        element: (
+            <RequireAuth>
+              <Users/>
+            </RequireAuth>
+        )
       },
       {
         path: "/user/:id",
-        element: <User/>,
+                element: (
+            <RequireAuth>
+              <User/>
+            </RequireAuth>
+        ),
         loader : getUsersById,
         hydrateFallbackElement : <Loading/>
       }

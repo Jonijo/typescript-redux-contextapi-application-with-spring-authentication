@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { Navigate } from 'react-router-dom';
 import { fetchUsersList, resetUsersList } from '../features/usersSlice';
 import Loading from '../components/Loading';
 import Card from '../components/Card';
@@ -19,7 +18,7 @@ const Users = () => {
     }
   }, [dispatch])
   
-  const user = useAppSelector((state)=>state.auth.user);
+
   const users = useAppSelector((state) => state.users.usersList)
   const loading = useAppSelector((state) => state.users.loading)
   const error = useAppSelector((state) => state.users.error)
@@ -34,7 +33,6 @@ const Users = () => {
   return (
     
     <>
-    {!user && <Navigate to="/login"/>}
     <div className="ui segment">
 
     { loading && <Loading/> }

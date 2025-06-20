@@ -28,3 +28,4 @@ export const getUsersById = async ({params} : LoaderFunctionArgs) =>
     
         return data.data
 }
+
