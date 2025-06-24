@@ -26,3 +26,24 @@ footer p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #777777;
 }
+
+:root[data-theme='light'] {
+  --bg-color: white;
+  --text-color: black;
+}
+
+:root[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: white;
+}
+
+:root[data-theme='blue'] {
+  --bg-color: #007bff;
+  --text-color: white;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

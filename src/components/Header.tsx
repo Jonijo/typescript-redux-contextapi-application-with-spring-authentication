@@ -2,12 +2,13 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAppSelector,useAppDispatch  } from '../app/hooks'
 import type { FormEvent } from 'react';
 import { logout } from '../features/authSlice';
+import ToggleTheme from './ToggleTheme';
 
 const Header = () => {
 
   const user = useAppSelector((state) => state.auth.username);
 
-  console.log("user is set as" +user);
+  console.log("user is set as" + user);
 
   const navigate = useNavigate();
 
@@ -34,6 +35,8 @@ const Header = () => {
       <a className="ui item">
 
         {user && <button onClick={handleLogout}>Logout [{user}]</button>}
+
+        <ToggleTheme/>
         
       </a>
     </div>

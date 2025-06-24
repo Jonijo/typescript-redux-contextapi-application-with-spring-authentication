@@ -16,6 +16,7 @@ import Loading from './components/Loading';
 import User from './routes/User';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './components/RequireAuth';
+import { ThemeProvider } from './components/context/ThemeContext.js';
 
 // npm install @reduxjs/toolkit react-redux axios react-router-dom react-router@latest jwt-decode react-toastify
 
@@ -73,9 +74,12 @@ if (container) {
   const root = createRoot(container)
 
   root.render(
+
+    <ThemeProvider>
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>,
+    </ThemeProvider>
   )
 } else {
   throw new Error(
